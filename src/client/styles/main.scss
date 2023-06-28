@@ -5,4 +5,11 @@ main{
     align-items: center;
 }
 
+p{
+    margin: 0;
+}
 
+.trip-weather{
+    display: flex;
+    flex-direction: column;
+}

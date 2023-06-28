@@ -15,12 +15,17 @@
     <main>
         <section>My Trips</section>
         <section class="trip-section">
-            <div class="trip-img">img</div>
+            <div class="trip-img" id="tripImg"></div>
             <div class="trip-data">
-                <div class="trip-title">title</div>
-                <div class="trip-buttons">buttons</div>
-                <div class="trip-timer">timer</div>
-                <div class="trip-weather">weather</div>
+                <div class="trip-title"><p id="city"></p></div>
+                <div class="trip-departing-time"><p id="tripDepartingTime"></p></div>
+                <div class="trip-buttons"><button id="btnSaveTrip">save trip</button><button id="btnRemoveTrip">remove trip</button></div>
+                <div class="trip-timer"><p id="tripTimer"></p></div>
+                <div class="trip-weather">
+                    <p>Typical weather for then is:</p>
+                    <div class="trip-weather-data-degree" id="tripWeatherDataDegree"></div>
+                    <div class="trip-weather-data-details" id="tripWeatherDataDetails"></div>
+                </div>
             </div>
 
 
