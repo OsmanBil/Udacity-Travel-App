@@ -14,7 +14,6 @@ function tripData() {
     const tripWeatherDataDegreeLow = "21";
     const tripWeatherDataDetails = "Mostly cloudy throughout the day"
 
-
     document.getElementById("tripImg").innerHTML = imageHTML;
     document.getElementById("city").innerHTML = "My trip to: " + tripCity;
     document.getElementById("tripDepartingTime").innerHTML = "Departing: " + tripDepartingTime;
@@ -22,8 +21,6 @@ function tripData() {
     document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + tripWeatherDataDegreeHigh + ", Low:" + tripWeatherDataDegreeLow;
     document.getElementById("tripWeatherDataDetails").innerHTML = tripWeatherDataDetails;
 
-
-   
 
 
 }

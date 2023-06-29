@@ -1,4 +1,7 @@
-import { tripData } from './js/trip';
+//import { tripData } from './js/trip';
+//import { geoNames } from './js/geoNames';
+//import { counter } from './js/counter';
+import { pixabay } from './js/pixabay';
 
 import './styles/body.scss';
 import './styles/header.scss';
@@ -11,7 +14,10 @@ import img from './media/stgt.png';
 
 
 export {
-    tripData
+    // tripData,
+    // geoNames,
+    // counter
+    pixabay
 }
 
 export const stgtImage = img;
