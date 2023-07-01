@@ -10,4 +10,4 @@ function berechneVerbleibendeTage() {
 }
 
 // Aufruf der Funktion und Ausgabe des Ergebnisses
-console.log('Verbleibende Tage bis zum Zieldatum: ' + berechneVerbleibendeTage());
+// console.log('Verbleibende Tage bis zum Zieldatum: ' + berechneVerbleibendeTage());

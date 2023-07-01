@@ -1,4 +1,4 @@
-const apiKey = 'DEIN_API_SCHLÜSSEL';
+const apiKey = '37971621-47c92db90eb2ccf7be00b5931';
 const city = 'Berlin';
 
 // API-Endpunkt für die Suche nach Bildern
@@ -11,14 +11,14 @@ function getCityImage() {
     .then(data => {
       if (data.hits.length > 0) {
         const image = data.hits[0].largeImageURL;
-        console.log('Bild-URL:', image);
+        //console.log('Bild-URL:', image);
         // Hier kannst du das Bild in deiner Anwendung verwenden
       } else {
-        console.log('Keine Bilder gefunden.');
+        //console.log('Keine Bilder gefunden.');
       }
     })
     .catch(error => {
-      console.log('Fehler beim Abrufen des Bildes:', error);
+      //console.log('Fehler beim Abrufen des Bildes:', error);
     });
 }
 

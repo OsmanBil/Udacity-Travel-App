@@ -4,16 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Travel Planner</title>
+    
 </head>
 
 <body>
-    <h1>test</h1>
-    <p>ccolortest</p>
+    <header>
+        Travel Planner
+    </header>
+    <main>
+        <section>My Trips</section>
+        <section class="trip-section">
+            <div class="trip-img" id="tripImg"></div>
+            <div class="trip-data">
+                <div class="trip-title"><p id="city"></p></div>
+                <div class="trip-departing-time"><p id="tripDepartingTime"></p></div>
+                <div class="trip-buttons"><button id="btnSaveTrip">save trip</button><button id="btnRemoveTrip">remove trip</button></div>
+                <div class="trip-timer"><p id="tripTimer"></p></div>
+                <div class="trip-weather">
+                    <p>Typical weather for then is:</p>
+                    <div class="trip-weather-data-degree" id="tripWeatherDataDegree"></div>
+                    <div class="trip-weather-data-details" id="tripWeatherDataDetails"></div>
+                </div>
+            </div>
 
 
-    <script>
+
+
+        </section>
+    </main>
+    <footer>footer</footer>
+    <!-- <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
@@ -25,7 +46,7 @@
                     });
             });
         }
-    </script>
-<script type="text/javascript" src="main.d20db0841cbd973b4b21.js"></script></body>
+    </script> -->
+<script type="text/javascript" src="main.3b1bd7e1986f70dce054.js"></script></body>
 
 </html>

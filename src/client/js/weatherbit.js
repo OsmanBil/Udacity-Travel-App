@@ -1,9 +1,9 @@
 const https = require('https');
 
-const apiKey = 'DEIN_API_SCHLÜSSEL'; // Füge hier deinen Weatherbit API-Schlüssel ein
+const apiKey = 'abc9199e2f814178b9acc277dad5380c'; // Füge hier deinen Weatherbit API-Schlüssel ein
 
-function fetchWeatherData(city) {
-  const url = `https://api.weatherbit.io/v2.0/current?key=${apiKey}&city=${encodeURIComponent(city)}`;
+function fetchWeatherData(latitude, longitude) {
+  const url = `https://api.weatherbit.io/v2.0/current?key=${apiKey}&lat=${latitude}&lon=${longitude}`;
 
   const request = https.get(url, (response) => {
     let data = '';
@@ -16,7 +16,7 @@ function fetchWeatherData(city) {
       const weatherData = JSON.parse(data);
 
       // Hier kannst du mit den Wetterdaten arbeiten
-      console.log('Wetterdaten:', weatherData);
+      //console.log('Wetterdaten:', weatherData);
     });
   });
 
@@ -25,6 +25,7 @@ function fetchWeatherData(city) {
   });
 }
 
-// Beispielaufruf der Funktion
-const city = 'Berlin'; // Die gewünschte Stadt
-fetchWeatherData(city);
+// Beispielaufruf der Funktion mit Latitude und Longitude
+const latitude = 52.5200; // Breitengrad der gewünschten Position
+const longitude = 13.4050; // Längengrad der gewünschten Position
+fetchWeatherData(latitude, longitude);

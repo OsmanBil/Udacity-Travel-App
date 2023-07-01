@@ -25,6 +25,25 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8089, function () {
-    console.log('App listening on port 8081!')
+app.listen(8090, function () {
+    console.log('App listening on port 8090!')
 })
+
+app.get('/test', function (req, res) {
+  const testVar = req.query.testVar; // Zugriff auf den Wert von testVar aus den Abfrageparametern
+
+  const responseData = testVar; // Hier kannst du deine gewünschten Backend-Daten erstellen oder abrufen
+
+  // Senden der Daten als Antwort
+  res.send(responseData);
+  //console.log(testVar);
+  //console.log(responseData);
+});
+
+
+app.get('/api/geonamesUserName', (req, res) => {
+  // API-Schlüssel an das Frontend senden
+  res.json({ apiKey: "test" });
+
+  console.log('TEST');
+});

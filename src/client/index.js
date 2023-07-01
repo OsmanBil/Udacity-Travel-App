@@ -1,7 +1,7 @@
-//import { tripData } from './js/trip';
-//import { geoNames } from './js/geoNames';
-//import { counter } from './js/counter';
-//import { pixabay } from './js/pixabay';
+import { tripData } from './js/trip';
+import { geoNames } from './js/geoNames';
+import { counter } from './js/counter';
+import { pixabay } from './js/pixabay';
 import { weatherbit } from './js/weatherbit';
 
 
@@ -16,11 +16,10 @@ import img from './media/stgt.png';
 
 
 export {
-    // tripData,
-    // geoNames,
-    // counter
-    // pixabay
-
+    tripData,
+    geoNames,
+    counter,
+    pixabay,
     weatherbit
 
 }
