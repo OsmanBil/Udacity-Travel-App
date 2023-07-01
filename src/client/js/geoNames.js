@@ -1,5 +1,3 @@
-
-
 const https = require('https');
 const querystring = require('querystring');
 
@@ -12,10 +10,10 @@ function getGeonamesData(query) {
     .then(data => {
 
       const geoUsername = data.geo; // get API-Key 
-      const username = geoUsername; // Fügen Sie hier Ihren GeoNames Benutzernamen ein
+      const username = geoUsername; 
 
 
-      // Definieren der Parameter für den API-Aufruf
+      // API-params
       const params = {
         username: username,
         q: query,
@@ -24,7 +22,7 @@ function getGeonamesData(query) {
 
       const url = `${baseUrl}?${querystring.stringify(params)}`;
 
-      // Senden Sie den API-Aufruf an GeoNames
+      // Send API-Get to GeoNames
       https.get(url, response => {
         let data = '';
 
@@ -37,16 +35,13 @@ function getGeonamesData(query) {
           if (result.geonames && result.geonames.length > 0) {
             const geoname = result.geonames[0];
             
-            const latitude = geoname.lat; // Breitengrad der gewünschten Position
-            const longitude = geoname.lng; // Längengrad der gewünschten Position
+            const latitude = geoname.lat;  
+            const longitude = geoname.lng; 
 
             Client.weatherbit(latitude, longitude, Client.tripStartDate, Client.tripEndDate);
 
-            //console.log('Breitengrad (Latitude):', geoname.lat);
-            // console.log('Längengrad (Longitude):', geoname.lng);
-            // console.log('Land (Country):', geoname.countryName);
           } else {
-            // console.log('Keine Ergebnisse gefunden.');
+            // console.log('No results found.');
           }
         });
       }).on('error', error => {

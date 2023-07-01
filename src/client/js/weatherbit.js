@@ -1,8 +1,6 @@
 const https = require('https');
 
 let tripCity = '';
-let weatherTemp = '';
-let weatherDetails = '';
 let highestTemp = null;
 let lowestTemp = null;
 let weatherDescriptionCounts = {};
@@ -33,9 +31,6 @@ function weatherbit(latitude, longitude, startDate, endDate) {
           console.log('Wetterdaten:', weatherData.data);
 
           tripCity = weatherData.city_name;
-          weatherTemp = weatherData.data[0].temp;
-          weatherDetails = weatherData.data[0].weather.description;
-
 
           Client.pixabay(tripCity);
 
@@ -91,4 +86,4 @@ function weatherbit(latitude, longitude, startDate, endDate) {
     });
 }
 
-export { weatherbit, tripCity, weatherTemp, weatherDetails, highestTemp, lowestTemp, mostCommonWeatherDescription };
+export { weatherbit, tripCity, highestTemp, lowestTemp, mostCommonWeatherDescription };

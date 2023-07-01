@@ -1,6 +1,3 @@
-//const apiKey = '37971621-47c92db90eb2ccf7be00b5931';
-//const city = 'Berlin';
-
 let tripImage = '';
 // Funktion zum Abrufen der Bilder von der Pixabay API
 function pixabay(city) {
