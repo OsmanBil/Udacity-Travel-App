@@ -1,8 +1,8 @@
-import { tripData } from './js/trip';
 import { geoNames } from './js/geoNames';
 import { counter } from './js/counter';
 import { pixabay } from './js/pixabay';
 import { weatherbit } from './js/weatherbit';
+import { tripData } from './js/tripData';
 
 
 import './styles/body.scss';
@@ -21,7 +21,6 @@ export {
     counter,
     pixabay,
     weatherbit
-
 }
 
 export const stgtImage = img;

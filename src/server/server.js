@@ -25,25 +25,34 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8090, function () {
+app.listen(8091, function () {
     console.log('App listening on port 8090!')
 })
 
-app.get('/test', function (req, res) {
-  const testVar = req.query.testVar; // Zugriff auf den Wert von testVar aus den Abfrageparametern
 
-  const responseData = testVar; // Hier kannst du deine gewünschten Backend-Daten erstellen oder abrufen
+const geoUsername = {
+  geoUser: process.env.GEO_USERNAME
+};
 
-  // Senden der Daten als Antwort
-  res.send(responseData);
-  //console.log(testVar);
-  //console.log(responseData);
-});
+const weatherbitApiKey = {
+  apiKey: process.env.WEATHERBIT_API_KEY
+};
 
+const pixabayApiKey = {
+  apiKey: process.env.PIXABAY_API_KEY
+};
 
 app.get('/api/geonamesUserName', (req, res) => {
   // API-Schlüssel an das Frontend senden
-  res.json({ apiKey: "test" });
+  res.json({ geo: geoUsername.geoUser });
+});
 
-  console.log('TEST');
+app.get('/api/weatherbitKey', (req, res) => {
+  // API-Schlüssel an das Frontend senden
+  res.json({ weatherbitKey: weatherbitApiKey.apiKey });
+});
+
+app.get('/api/pixabayKey', (req, res) => {
+  // API-Schlüssel an das Frontend senden
+  res.json({ pixabayKey: pixabayApiKey.apiKey });
 });
