@@ -40,7 +40,7 @@ function getGeonamesData(query) {
             const latitude = geoname.lat; // Breitengrad der gewünschten Position
             const longitude = geoname.lng; // Längengrad der gewünschten Position
 
-            Client.weatherbit(latitude, longitude);
+            Client.weatherbit(latitude, longitude, Client.tripStartDate, Client.tripEndDate);
 
             //console.log('Breitengrad (Latitude):', geoname.lat);
             // console.log('Längengrad (Longitude):', geoname.lng);

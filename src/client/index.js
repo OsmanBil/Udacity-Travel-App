@@ -6,6 +6,9 @@ import { weatherbit } from './js/weatherbit';
 import { tripCity } from './js/weatherbit';
 import { weatherTemp } from './js/weatherbit';
 import { weatherDetails } from './js/weatherbit';
+import { highestTemp } from './js/weatherbit';
+import { lowestTemp } from './js/weatherbit';
+import { mostCommonWeatherDescription } from './js/weatherbit';
 
 import { getGeonamesData } from './js/geoNames';
 
@@ -30,6 +33,9 @@ import img from './media/stgt.png';
 
 
 export {
+    lowestTemp,
+    highestTemp,
+    mostCommonWeatherDescription,
     handleSubmit,
     getGeonamesData,
     trip,
@@ -41,7 +47,8 @@ export {
     weatherDetails,
     tripImage,
     tripStartDate,
-    tripEndDate
+    tripEndDate,
+    
 }
 
 export const stgtImage = img;

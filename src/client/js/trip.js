@@ -23,8 +23,8 @@ function trip() {
     console.log("tripCity: " + Client.tripCity);
     document.getElementById("tripDepartingTime").innerHTML = "Departing: " + Client.tripStartDate;
     document.getElementById("tripTimer").innerHTML = Client.tripCity + " is " + tripTimer + " days away";
-    document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + Client.weatherTemp + ", Low:" + tripWeatherDataDegreeLow;
-    document.getElementById("tripWeatherDataDetails").innerHTML = Client.weatherDetails;
+    document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + Client.highestTemp + ", Low:" + Client.lowestTemp;
+    document.getElementById("tripWeatherDataDetails").innerHTML = Client.mostCommonWeatherDescription;
 }
 
 export { trip };
