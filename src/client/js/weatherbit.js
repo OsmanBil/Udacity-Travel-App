@@ -1,13 +1,14 @@
 const https = require('https');
 
 //const apiKey = 'abc9199e2f814178b9acc277dad5380c'; // Füge hier deinen Weatherbit API-Schlüssel ein
-
-
+let tripCity = '';
+let weatherTemp = '';
+let weatherDetails = '';
 
 // Setze baseUrl mit den aktuellen Werten von latitude und longitude
 
 
-function fetchWeatherData(latitude, longitude) {
+function weatherbit(latitude, longitude) {
 
   fetch('http://localhost:8091/api/weatherbitKey')
     .then(response => response.json())
@@ -34,7 +35,23 @@ function fetchWeatherData(latitude, longitude) {
           const weatherData = JSON.parse(data);
 
           // Hier kannst du mit den Wetterdaten arbeiten
-          //console.log('Wetterdaten:', weatherData);
+          console.log('Wetterdaten:', weatherData.data[0].city_name);
+
+          console.log('Wetterdaten:', weatherData.data);
+
+          Client.pixabay(weatherData.data[0].city_name);
+
+
+          tripCity = weatherData.data[0].city_name;
+          weatherTemp = weatherData.data[0].temp;
+          weatherDetails = weatherData.data[0].weather.description;
+          // wait 2 seconds
+          setTimeout(function() {
+            Client.trip();
+          }, 2000);
+
+         
+
         });
       });
 
@@ -50,5 +67,4 @@ function fetchWeatherData(latitude, longitude) {
 }
 
 
-//export { fetchWeatherData };
-
+export { weatherbit, tripCity, weatherTemp, weatherDetails };

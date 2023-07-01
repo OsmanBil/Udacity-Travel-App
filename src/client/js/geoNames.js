@@ -1,3 +1,5 @@
+
+
 const https = require('https');
 const querystring = require('querystring');
 
@@ -34,11 +36,11 @@ function getGeonamesData(query) {
           const result = JSON.parse(data);
           if (result.geonames && result.geonames.length > 0) {
             const geoname = result.geonames[0];
-            // Beispielaufruf der Funktion mit Latitude und Longitude
-            const latitude = 52.5200; // Breitengrad der gewünschten Position
-            const longitude = 13.4050; // Längengrad der gewünschten Position
+            
+            const latitude = geoname.lat; // Breitengrad der gewünschten Position
+            const longitude = geoname.lng; // Längengrad der gewünschten Position
 
-            Client.fetchWeatherData(latitude, longitude);
+            Client.weatherbit(latitude, longitude);
 
             //console.log('Breitengrad (Latitude):', geoname.lat);
             // console.log('Längengrad (Longitude):', geoname.lng);
@@ -59,7 +61,7 @@ function getGeonamesData(query) {
     });
 }
 
-// Beispielaufruf
-const query = 'großbottwar'; // Geben Sie hier den Namen der Stadt oder die Postleitzahl an
-getGeonamesData(query);
+export { getGeonamesData };
+
+
 

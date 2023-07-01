@@ -2,7 +2,12 @@ const path = require("path")
 const webpack = require("webpack")
 module.exports = {
   entry: './src/client/index.js',
-
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.min.js',
+    libraryTarget: 'var',
+    library: 'Client'
+},
   module: {
     rules: [
       {
@@ -27,5 +32,17 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
-  }
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+        template: "./src/client/views/index.html",
+        filename: "./index.html",
+    }),
+    new CleanWebpackPlugin({
+        dry: true,
+        verbose: true,
+        cleanStaleWebpackAssets: true,
+        protectWebpackAssets: false
+    })
+]
 }
