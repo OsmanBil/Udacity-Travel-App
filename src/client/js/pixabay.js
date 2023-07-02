@@ -1,4 +1,5 @@
 let tripImage = '';
+import myImage from '../media/stgt.png';
 
 // Funktion zum Abrufen der Bilder von der Pixabay API
 async function pixabay(city) {
@@ -21,7 +22,8 @@ async function pixabay(city) {
       //console.log('Keine Bilder gefunden.');
     }
   } catch (error) {
-    console.error('Fehler beim Abrufen des Bildes:', error);
+    // If an error occurs, a default image is used
+    tripImage = myImage;
   }
 }
 

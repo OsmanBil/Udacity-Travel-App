@@ -1,4 +1,5 @@
 let tripTimer = '';
+import jsPDF from 'jspdf';
 
 function trip(highestTemp, lowestTemp) {
     // Create trip-section
@@ -65,6 +66,23 @@ function trip(highestTemp, lowestTemp) {
     tripWeatherDiv.appendChild(tripWeatherDataDegreeDiv);
     tripWeatherDiv.appendChild(tripWeatherDataDetailsDiv);
 
+
+
+    // Create Button
+    const buttonContainerDiv = document.createElement('div');
+    buttonContainerDiv.setAttribute('id', 'buttonContainer');
+
+
+    // const buttonContainerPar = document.createElement('p');
+    // buttonContainerPar.textContent = 'das wird ein button';
+
+
+    const button = document.createElement('button');
+    button.textContent = 'Create PDF';
+    button.addEventListener('click', createPDF);
+    buttonContainerDiv.appendChild(button);
+
+
     // Add the created elements to the tripDataDiv
     tripDataDiv.appendChild(tripTitleDiv);
     tripDataDiv.appendChild(tripDepartingTimeDiv);
@@ -72,7 +90,7 @@ function trip(highestTemp, lowestTemp) {
     tripDataDiv.appendChild(tripEndDateDiv);
     tripDataDiv.appendChild(tripLengthDiv);
     tripDataDiv.appendChild(tripWeatherDiv);
-
+    tripDataDiv.appendChild(buttonContainerDiv);
     // Add the tripImgDiv and tripDataDiv to the section element
     section.appendChild(tripImgDiv);
     section.appendChild(tripDataDiv);
@@ -129,5 +147,36 @@ function updateWeatherData(highestTemp, lowestTemp) {
     document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + highestTemp + ", Low:" + lowestTemp;
     document.getElementById("tripWeatherDataDetails").innerHTML = Client.mostCommonWeatherDescription;
 }
+
+
+function createPDF() {
+    const doc = new jsPDF();
+    
+    // Get trip data
+    const city = document.getElementById("city").innerHTML.replace("My trip to: ", "");
+    const tripDepartingTime = document.getElementById("tripDepartingTime").innerHTML.replace("Departing: ", "");
+    const tripTimer = document.getElementById("tripTimer").innerHTML;
+    const tripEndDate = document.getElementById("tripEndDate").innerHTML.replace("Return: ", "");
+    const tripLength = document.getElementById("tripLength").innerHTML.replace("Trip length: ", "");
+    const tripWeatherDegree = document.getElementById("tripWeatherDataDegree").innerHTML.replace("High: ", "").replace(", Low:", "");
+    const tripWeatherDetails = document.getElementById("tripWeatherDataDetails").innerHTML;
+  
+    // Add trip data to the PDF
+    doc.setFontSize(16);
+    doc.text(`Your trip Data:`, 10, 10);
+    doc.setFontSize(12);
+    doc.text(`City: ${city}`, 10, 20);
+    doc.text(`Departing: ${tripDepartingTime}`, 10, 30);
+    doc.text(`Trip Timer: ${tripTimer}`, 10, 40);
+    doc.text(`Return: ${tripEndDate}`, 10, 50);
+    doc.text(`Trip Length: ${tripLength}`, 10, 60);
+    doc.text(`Weather: High: ${tripWeatherDegree}, ${tripWeatherDetails}`, 10, 70);
+    
+    // Save the PDF
+    doc.save('trip.pdf');
+  }
+  
+
+
 
 export { trip, timer, updateWeatherData };
