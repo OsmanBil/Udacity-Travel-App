@@ -1,5 +1,6 @@
 main{
-    padding: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +16,7 @@ p{
 }
 
 .trip-section-container{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-self: center;
@@ -23,7 +24,7 @@ p{
 
 .trip-section{
     margin-top: 16px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-self: center;
@@ -45,6 +46,10 @@ p{
     justify-content:space-between;
     gap: 12px;
     margin-top: 12px;
+}
+
+.margin-container{
+    height: 50px;
 }
 
 
