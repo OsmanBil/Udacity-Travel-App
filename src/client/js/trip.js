@@ -66,12 +66,13 @@ function trip(highestTemp, lowestTemp) {
     tripWeatherDiv.appendChild(tripWeatherDataDegreeDiv);
     tripWeatherDiv.appendChild(tripWeatherDataDetailsDiv);
 
-    // Create Button
+    // Create Button 
     const buttonContainerDiv = document.createElement('div');
     buttonContainerDiv.setAttribute('id', 'buttonContainer');
-
+ 
     const button = document.createElement('button');
     button.textContent = 'Create PDF';
+    button.setAttribute('class', 'hover-effect');
     button.addEventListener('click', createPDF);
     buttonContainerDiv.appendChild(button);
 
