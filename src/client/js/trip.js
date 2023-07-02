@@ -1,6 +1,6 @@
 let tripTimer = '';
 
-function trip() {
+function trip(highestTemp, lowestTemp) {
     // Create trip-section
     const section = document.createElement('section');
     section.setAttribute('class', 'trip-section');
@@ -35,6 +35,21 @@ function trip() {
     tripTimerParagraph.setAttribute('id', 'tripTimer');
     tripTimerDiv.appendChild(tripTimerParagraph);
 
+    // Create trip-end-date-div
+    const tripEndDateDiv = document.createElement('div');
+    tripEndDateDiv.setAttribute('class', 'trip-end-date');
+    const tripEndDateParagraph = document.createElement('p');
+    tripEndDateParagraph.setAttribute('id', 'tripEndDate');
+    tripEndDateDiv.appendChild(tripEndDateParagraph);
+
+    // Create trip-length-div 
+    const tripLengthDiv = document.createElement('div');
+    tripLengthDiv.setAttribute('class', 'trip-length');
+    const tripLengthParagraph = document.createElement('p');
+    tripLengthParagraph.setAttribute('id', 'tripLength');
+    tripLengthDiv.appendChild(tripLengthParagraph);
+
+
     // Create trip-weather-div
     const tripWeatherDiv = document.createElement('div');
     tripWeatherDiv.setAttribute('class', 'trip-weather');
@@ -54,6 +69,8 @@ function trip() {
     tripDataDiv.appendChild(tripTitleDiv);
     tripDataDiv.appendChild(tripDepartingTimeDiv);
     tripDataDiv.appendChild(tripTimerDiv);
+    tripDataDiv.appendChild(tripEndDateDiv);
+    tripDataDiv.appendChild(tripLengthDiv);
     tripDataDiv.appendChild(tripWeatherDiv);
 
     // Add the tripImgDiv and tripDataDiv to the section element
@@ -71,17 +88,32 @@ function trip() {
     // Call timer
     Client.timer();
 
+    // Calculate trip length
+    let tripLength = Math.ceil((new Date(Client.tripEndDate) - new Date(Client.tripStartDate)) / (1000 * 60 * 60 * 24) + 1);
+
+
+    // Format the date in dd/mm/yyyy format
+    function formatDate(date) {
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
     // Add the trip data to the trip section
     document.getElementById("tripImg").innerHTML = imageHTML;
     document.getElementById("city").innerHTML = "My trip to: " + Client.tripCity;
-    document.getElementById("tripDepartingTime").innerHTML = "Departing: " + Client.tripStartDate;
+    document.getElementById("tripDepartingTime").innerHTML = "Departing: " + formatDate(new Date(Client.tripStartDate));
     document.getElementById("tripTimer").innerHTML = Client.tripCity + " is " + tripTimer + " days away";
+    document.getElementById("tripEndDate").innerHTML = "Return: " + formatDate(new Date(Client.tripEndDate));
+    document.getElementById("tripLength").innerHTML = "Trip length: " + tripLength + " days";
+
 
     // Update weather data for the new trip
 
-        Client.updateWeatherData();
+    Client.updateWeatherData(highestTemp, lowestTemp);
 
-    
+
 }
 
 function timer() {
@@ -92,9 +124,9 @@ function timer() {
     tripTimer = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 }
 
-function updateWeatherData() {
+function updateWeatherData(highestTemp, lowestTemp) {
     // Update weather data for the new trip
-    document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + Client.highestTemp + ", Low:" + Client.lowestTemp;
+    document.getElementById("tripWeatherDataDegree").innerHTML = "High: " + highestTemp + ", Low:" + lowestTemp;
     document.getElementById("tripWeatherDataDetails").innerHTML = Client.mostCommonWeatherDescription;
 }
 

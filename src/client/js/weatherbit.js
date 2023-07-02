@@ -1,10 +1,9 @@
 const https = require('https');
 
 let tripCity = '';
+let mostCommonWeatherDescription = '';
 let highestTemp = null;
 let lowestTemp = null;
-let weatherDescriptionCounts = {};
-let mostCommonWeatherDescription = '';
 
 async function weatherbit(latitude, longitude, startDate, endDate) {
   try {
@@ -44,7 +43,12 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
 
     await Client.pixabay(tripCity);
 
+    // Reset highestTemp and lowestTemp before processing the weather data
+    highestTemp = null;
+    lowestTemp = null;
+
     // Find highest and lowest temperature within the specified date range
+    let weatherDescriptionCounts = {};
     weatherData.data.forEach(day => {
       const currentDate = new Date(day.valid_date);
       const startDateObj = new Date(startDate);
@@ -70,7 +74,6 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
     });
 
     // Find the most common weather description
-
     let maxCount = 0;
     for (const [description, count] of Object.entries(weatherDescriptionCounts)) {
       if (count > maxCount) {
@@ -80,11 +83,11 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
     }
 
     console.log('Am häufigsten vorkommende Wetterbeschreibung:', mostCommonWeatherDescription);
-
-    await Client.trip();
+    await Client.trip(highestTemp, lowestTemp);
+    return { highestTemp, lowestTemp };
   } catch (error) {
     console.error('Error:', error);
   }
 }
 
-export { weatherbit, tripCity, highestTemp, lowestTemp, mostCommonWeatherDescription };
+export { weatherbit, tripCity, mostCommonWeatherDescription };

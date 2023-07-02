@@ -5,8 +5,6 @@ import { tripImage } from './js/pixabay';
 // Import weatherbit datas
 import { weatherbit } from './js/weatherbit';
 import { tripCity } from './js/weatherbit';
-import { highestTemp } from './js/weatherbit';
-import { lowestTemp } from './js/weatherbit';
 import { mostCommonWeatherDescription } from './js/weatherbit';
 
 // Import geonames datas
@@ -36,8 +34,6 @@ import './styles/trip.scss';
 // Export all datas
 export {
     fetchData,
-    lowestTemp,
-    highestTemp,
     mostCommonWeatherDescription,
     handleSubmit,
     getGeonamesData,
