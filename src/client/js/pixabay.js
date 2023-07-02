@@ -1,7 +1,7 @@
 let tripImage = '';
 import myImage from '../media/stgt.png';
 
-// Funktion zum Abrufen der Bilder von der Pixabay API
+// Function to get the images from the Pixabay API
 async function pixabay(city) {
   try {
     const response = await fetch('http://localhost:8091/api/pixabayKey');
@@ -17,9 +17,7 @@ async function pixabay(city) {
       const image = imageData.hits[0].largeImageURL;
       tripImage = image;
       console.log('Bild-URL:', image);
-      // Hier kannst du das Bild in deiner Anwendung verwenden
     } else {
-      //console.log('Keine Bilder gefunden.');
     }
   } catch (error) {
     // If an error occurs, a default image is used
@@ -27,5 +25,4 @@ async function pixabay(city) {
   }
 }
 
-// Aufruf der Funktion zum Abrufen des Bildes
 export { pixabay, tripImage };

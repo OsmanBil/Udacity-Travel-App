@@ -43,16 +43,16 @@ const pixabayApiKey = {
 };
 
 app.get('/api/geonamesUserName', (req, res) => {
-  // API-Schlüssel an das Frontend senden
+  // Send geonamesUserName-API key to frontend
   res.json({ geo: geoUsername.geoUser });
 });
 
 app.get('/api/weatherbitKey', (req, res) => {
-  // API-Schlüssel an das Frontend senden
+  // Send weatherbitKey-API key to frontend
   res.json({ weatherbitKey: weatherbitApiKey.apiKey });
 });
 
 app.get('/api/pixabayKey', (req, res) => {
-  // API-Schlüssel an das Frontend senden
+  // Send pixabayKey-API key to frontend
   res.json({ pixabayKey: pixabayApiKey.apiKey });
 });

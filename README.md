@@ -43,6 +43,7 @@ No Usage - its a Udacity learn project
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "install": "^0.13.0",
+    "jspdf": "^2.5.1",
     "npm": "^9.7.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",

@@ -66,22 +66,14 @@ function trip(highestTemp, lowestTemp) {
     tripWeatherDiv.appendChild(tripWeatherDataDegreeDiv);
     tripWeatherDiv.appendChild(tripWeatherDataDetailsDiv);
 
-
-
     // Create Button
     const buttonContainerDiv = document.createElement('div');
     buttonContainerDiv.setAttribute('id', 'buttonContainer');
-
-
-    // const buttonContainerPar = document.createElement('p');
-    // buttonContainerPar.textContent = 'das wird ein button';
-
 
     const button = document.createElement('button');
     button.textContent = 'Create PDF';
     button.addEventListener('click', createPDF);
     buttonContainerDiv.appendChild(button);
-
 
     // Add the created elements to the tripDataDiv
     tripDataDiv.appendChild(tripTitleDiv);
@@ -109,7 +101,6 @@ function trip(highestTemp, lowestTemp) {
     // Calculate trip length
     let tripLength = Math.ceil((new Date(Client.tripEndDate) - new Date(Client.tripStartDate)) / (1000 * 60 * 60 * 24) + 1);
 
-
     // Format the date in dd/mm/yyyy format
     function formatDate(date) {
         const day = date.getDate();
@@ -126,12 +117,8 @@ function trip(highestTemp, lowestTemp) {
     document.getElementById("tripEndDate").innerHTML = "Return: " + formatDate(new Date(Client.tripEndDate));
     document.getElementById("tripLength").innerHTML = "Trip length: " + tripLength + " days";
 
-
     // Update weather data for the new trip
-
     Client.updateWeatherData(highestTemp, lowestTemp);
-
-
 }
 
 function timer() {
@@ -151,8 +138,7 @@ function updateWeatherData(highestTemp, lowestTemp) {
 
 function createPDF() {
     const doc = new jsPDF();
-    
-    // Get trip data
+     // Get trip data
     const city = document.getElementById("city").innerHTML.replace("My trip to: ", "");
     const tripDepartingTime = document.getElementById("tripDepartingTime").innerHTML.replace("Departing: ", "");
     const tripTimer = document.getElementById("tripTimer").innerHTML;
@@ -175,8 +161,5 @@ function createPDF() {
     // Save the PDF
     doc.save('trip.pdf');
   }
-  
-
-
-
+ 
 export { trip, timer, updateWeatherData };
