@@ -69,7 +69,7 @@ function trip() {
     const imageHTML = '<img src="' + Client.tripImage + '" alt="Trip Image">';
 
     // Call timer
-    timer();
+    Client.timer();
 
     // Add the trip data to the trip section
     document.getElementById("tripImg").innerHTML = imageHTML;
@@ -79,7 +79,7 @@ function trip() {
 
     // Update weather data for the new trip
 
-        updateWeatherData();
+        Client.updateWeatherData();
 
     
 }
@@ -98,4 +98,4 @@ function updateWeatherData() {
     document.getElementById("tripWeatherDataDetails").innerHTML = Client.mostCommonWeatherDescription;
 }
 
-export { trip, timer };
+export { trip, timer, updateWeatherData };

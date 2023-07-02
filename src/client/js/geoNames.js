@@ -20,7 +20,7 @@ async function getGeonamesData(query) {
 
     const url = `${baseUrl}?${querystring.stringify(params)}`;
 
-    const result = await fetchData(url);
+    const result = await Client.fetchData(url);
     if (result.geonames && result.geonames.length > 0) {
       const geoname = result.geonames[0];
 
@@ -54,4 +54,4 @@ function fetchData(url) {
   });
 }
 
-export { getGeonamesData };
+export { getGeonamesData, fetchData };
