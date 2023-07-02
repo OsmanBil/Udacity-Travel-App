@@ -16,8 +16,8 @@ async function pixabay(city) {
     if (imageData.hits.length > 0) {
       const image = imageData.hits[0].largeImageURL;
       tripImage = image;
-      console.log('Bild-URL:', image);
     } else {
+      alert("No image found for this location.");
     }
   } catch (error) {
     // If an error occurs, a default image is used

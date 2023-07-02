@@ -29,7 +29,7 @@ async function getGeonamesData(query) {
 
       await Client.weatherbit(latitude, longitude, Client.tripStartDate, Client.tripEndDate);
     } else {
-      // console.log('No results found.');
+      alert("Geonames-No results found.");
     }
   } catch (error) {
     console.log('Error:', error);

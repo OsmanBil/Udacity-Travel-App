@@ -35,10 +35,6 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
     });
 
     const weatherData = JSON.parse(responseData);
-
-    console.log('Wetterdaten:', weatherData.city_name);
-    console.log('Wetterdaten:', weatherData.data);
-
     tripCity = weatherData.city_name;
 
     await Client.pixabay(tripCity);
@@ -57,11 +53,9 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
       if (currentDate >= startDateObj && currentDate <= endDateObj) {
         if (highestTemp === null || day.max_temp > highestTemp) {
           highestTemp = day.max_temp;
-          console.log('highestTemp:', highestTemp);
         }
         if (lowestTemp === null || day.min_temp < lowestTemp) {
           lowestTemp = day.min_temp;
-          console.log('lowestTemp:', lowestTemp);
         }
 
         const description = day.weather.description;
@@ -82,7 +76,6 @@ async function weatherbit(latitude, longitude, startDate, endDate) {
       }
     }
 
-    console.log('Am häufigsten vorkommende Wetterbeschreibung:', mostCommonWeatherDescription);
     await Client.trip(highestTemp, lowestTemp);
     return { highestTemp, lowestTemp };
   } catch (error) {
