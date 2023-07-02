@@ -11,7 +11,23 @@ function handleSubmit(event) {
 
     // Check if input value is empty
     if (destinationInput === "") {
-        alert("Please enter a text.");
+        alert("Please enter your destination city.");
+        return false;
+    //  Check if trip start date is empty
+    }else if (tripStartDate === "") {
+        alert("Please enter your trip start date.");
+        return false;
+    //  Check if trip end date is empty 
+    }else if (tripEndDate === "") {
+        alert("Please enter your trip end date.");
+        return false;
+    //  Check if trip start date is greater than trip end date
+    }else if (tripStartDate > tripEndDate) {
+        alert("Please enter a valid trip start and end date.");
+        return false;
+    //  Check if trip start date is less than current date
+    }  else if  (Date.parse(tripStartDate) < Date.now()) {
+        alert("Please enter a valid trip start date.");
         return false;
     }
 
