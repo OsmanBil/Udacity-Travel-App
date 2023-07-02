@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 
 // designates what port the app will listen to for incoming requests
 app.listen(8091, function () {
-    console.log('App listening on port 8090!')
+    console.log('App listening on port 8091!')
 })
 
 
@@ -56,3 +56,7 @@ app.get('/api/pixabayKey', (req, res) => {
   // Send pixabayKey-API key to frontend
   res.json({ pixabayKey: pixabayApiKey.apiKey });
 });
+
+module.exports = {
+  app // Hier exportieren wir `app`
+};
