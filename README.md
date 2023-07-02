@@ -16,13 +16,19 @@ To quickly see a demo of the project, follow these steps:
 3. Install the dependencies:
     npm install
 
-4. Start the development server:
+4. Create .env
+    you have to create .env file and fill with:
+    GEO_USERNAME=yourNick
+    WEATHERBIT_API_KEY=yourKey
+    PIXABAY_API_KEY=yourKey
+
+5. Start the development server:
     npm run start
 
-5. Start the frontend
+6. Start the frontend
     npm run build-dev
 
-5. Open your web browser and visit `http://localhost:8080` to see the project in action.
+7. Open your web browser and visit `http://localhost:8080` to see the project in action.
 
 # Table of Contents
 
@@ -38,6 +44,7 @@ No Usage - its a Udacity learn project
 [(Back to top)](#table-of-contents)
 
 # Dependencies
+"dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -45,8 +52,12 @@ No Usage - its a Udacity learn project
     "install": "^0.13.0",
     "jspdf": "^2.5.1",
     "npm": "^9.7.2",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.13.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.5.4",
@@ -56,11 +67,15 @@ No Usage - its a Udacity learn project
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "style-loader": "^0.23.1",
+    "supertest": "^6.3.3",
     "url-loader": "^4.1.1",
     "webpack-dev-server": "^3.11.3",
     "workbox-webpack-plugin": "^7.0.0"
+  }
+
 
 [(Back to top)](#table-of-contents)
