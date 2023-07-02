@@ -13,3 +13,46 @@ p{
     display: flex;
     flex-direction: column;
 }
+
+.trip-section-container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.trip-section{
+    margin-top: 16px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-color: bisque;
+}
+
+.trip-button{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trip-destination, .trip-from, .trip-to {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+
+@media (max-width: 500px) {
+    .trip-destination, .trip-from, .trip-to {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+}

@@ -3,60 +3,55 @@ const querystring = require('querystring');
 
 const baseUrl = 'https://secure.geonames.org/searchJSON';
 
-function getGeonamesData(query) {
+async function getGeonamesData(query) {
+  try {
+    const response = await fetch('http://localhost:8091/api/geonamesUserName');
+    const data = await response.json();
 
-  fetch('http://localhost:8091/api/geonamesUserName')
-    .then(response => response.json())
-    .then(data => {
+    const geoUsername = data.geo; // get API-Key 
+    const username = geoUsername;
 
-      const geoUsername = data.geo; // get API-Key 
-      const username = geoUsername; 
+    // API-params
+    const params = {
+      username: username,
+      q: query,
+      maxRows: 1
+    };
 
+    const url = `${baseUrl}?${querystring.stringify(params)}`;
 
-      // API-params
-      const params = {
-        username: username,
-        q: query,
-        maxRows: 1
-      };
+    const result = await fetchData(url);
+    if (result.geonames && result.geonames.length > 0) {
+      const geoname = result.geonames[0];
 
-      const url = `${baseUrl}?${querystring.stringify(params)}`;
+      const latitude = geoname.lat;
+      const longitude = geoname.lng;
 
-      // Send API-Get to GeoNames
-      https.get(url, response => {
-        let data = '';
+      await Client.weatherbit(latitude, longitude, Client.tripStartDate, Client.tripEndDate);
+    } else {
+      // console.log('No results found.');
+    }
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
 
-        response.on('data', chunk => {
-          data += chunk;
-        });
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, response => {
+      let data = '';
 
-        response.on('end', () => {
-          const result = JSON.parse(data);
-          if (result.geonames && result.geonames.length > 0) {
-            const geoname = result.geonames[0];
-            
-            const latitude = geoname.lat;  
-            const longitude = geoname.lng; 
-
-            Client.weatherbit(latitude, longitude, Client.tripStartDate, Client.tripEndDate);
-
-          } else {
-            // console.log('No results found.');
-          }
-        });
-      }).on('error', error => {
-        console.log('Fehler beim API-Aufruf:', error.message);
+      response.on('data', chunk => {
+        data += chunk;
       });
 
-
-
-    })
-    .catch(error => {
-      console.error('Error:', error);
+      response.on('end', () => {
+        resolve(JSON.parse(data));
+      });
+    }).on('error', error => {
+      reject(error);
     });
+  });
 }
 
 export { getGeonamesData };
-
-
-

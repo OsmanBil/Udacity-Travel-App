@@ -1,7 +1,3 @@
-
-// Import counter datas
-import { counter } from './js/counter';
-
 // Import pixabay datas
 import { pixabay } from './js/pixabay';
 import { tripImage } from './js/pixabay';
@@ -20,6 +16,7 @@ import { getGeonamesData } from './js/geoNames';
 import { handleSubmit } from './js/formHandler';
 import { tripStartDate } from './js/formHandler';
 import { tripEndDate } from './js/formHandler';
+import { timer } from './js/trip';
 
 // Import trip datas
 import { trip } from './js/trip';
@@ -40,11 +37,11 @@ export {
     handleSubmit,
     getGeonamesData,
     trip,
-    counter,
     pixabay,
     weatherbit,
     tripCity,
     tripImage,
     tripStartDate,
     tripEndDate,
+    timer
 }

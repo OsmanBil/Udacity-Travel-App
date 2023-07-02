@@ -1,7 +1,6 @@
 .trip-section{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;    
     padding: 12px;
 }
 
@@ -17,5 +16,18 @@
 }
 
 img{
-    height: 160px;
+    height: 320px;
+}
+
+
+@media (max-width: 750px) {
+    .trip-section{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+    }
+
+    img{
+        height: 160px;
+    }
 }
